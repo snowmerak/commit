@@ -2,15 +2,26 @@ package main
 
 import (
 	"log"
+	"os"
 )
 
 func main() {
-	files, err := GetUnstagedFiles(".")
+	pwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+
+	files, err := GetUnstagedFiles(pwd)
 	if err != nil {
 		panic(err)
 	}
 
 	formatted := FormatUnsagedFiles(files)
+
+	if len(formatted) == 0 {
+		log.Println("No files to commit")
+		return
+	}
 
 	selectedFiles, err := SelectFilesSurvey(formatted...)
 	if err != nil {
