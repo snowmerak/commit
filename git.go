@@ -35,18 +35,18 @@ func GetUnstagedFiles(dir string) (GitFiles, error) {
 		if len(line) < 4 {
 			continue
 		}
-		switch line[0] {
-		case ' ':
+		switch line[:2] {
+		case "  ":
 			continue
-		case '?':
+		case "??", " ?", "? ":
 			files.Untracked = append(files.Untracked, line[3:])
-		case 'M':
+		case " M", "M ", "MM":
 			files.Modified = append(files.Modified, line[3:])
-		case 'D':
+		case " D", "D ", "DD":
 			files.Deleted = append(files.Deleted, line[3:])
-		case 'R':
+		case "R ", " R", "RM":
 			files.Renamed = append(files.Renamed, line[3:])
-		case 'C':
+		case "C ", " C", "CC":
 			files.Copied = append(files.Copied, line[3:])
 		}
 	}
