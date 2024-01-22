@@ -18,14 +18,14 @@ func main() {
 
 	formatted := FormatUnsagedFiles(files)
 
-	if len(formatted) == 0 {
-		log.Println("No files to commit")
-		return
-	}
-
 	selectedFiles, err := SelectFilesSurvey(formatted...)
 	if err != nil {
 		panic(err)
+	}
+
+	if len(selectedFiles) == 0 {
+		log.Println("No files selected")
+		return
 	}
 
 	selectedType, err := SelectCommitType()
