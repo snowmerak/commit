@@ -8,7 +8,7 @@ var GitEmoji = map[string]string{
 	"remove code":         "🔥",
 	"fix bug":             "🐛",
 	"fix critical issue":  "🚑",
-	"new feature":         "✨",
+	"new code":            "✨",
 	"document":            "📝",
 	"test":                "✅",
 	"generate files":      "🗃",
