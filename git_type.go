@@ -13,6 +13,7 @@ var GitCommitType = map[string]GitTag{
 	"remove code or feature":     {Tag: "CODE", Emoji: "🔥"},
 	"refactor or reformat code":  {Tag: "CODE", Emoji: "🎨"},
 	"improve code or feature":    {Tag: "CODE", Emoji: "🚀"},
+	"revert code or feature":     {Tag: "CODE", Emoji: "⏪"},
 	"typo fix":                   {Tag: "FIX", Emoji: "✏️"},
 	"bug fix":                    {Tag: "FIX", Emoji: "🐛"},
 	"critical hotfix":            {Tag: "FIX", Emoji: "🚑"},
