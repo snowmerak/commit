@@ -85,7 +85,7 @@ type CommitMessage struct {
 }
 
 func (c CommitMessage) String() string {
-	return fmt.Sprintf("[%s]%s: %s", c.Emoji, c.Tag, c.Message)
+	return fmt.Sprintf("%s %s: %s", c.Emoji, c.Tag, c.Message)
 }
 
 func GitAdd(files []string) error {
