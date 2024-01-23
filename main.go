@@ -33,19 +33,14 @@ func main() {
 		panic(err)
 	}
 
-	selectedEmoji, err := SelectGitEmojiSurvey()
-	if err != nil {
-		panic(err)
-	}
-
 	message, err := WriteCommitMessage()
 	if err != nil {
 		panic(err)
 	}
 
 	cm := CommitMessage{
-		Emoji:   selectedEmoji,
-		Type:    selectedType,
+		Emoji:   selectedType.Emoji,
+		Tag:     selectedType.Tag,
 		Message: message,
 	}
 

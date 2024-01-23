@@ -1,8 +1,6 @@
 package main
 
 import (
-	"strings"
-
 	"github.com/AlecAivazis/survey/v2"
 )
 
@@ -25,26 +23,7 @@ func SelectFilesSurvey(files ...string) ([]string, error) {
 	return selected, nil
 }
 
-func SelectGitEmojiSurvey() (string, error) {
-	formatted := FormatGitEmoji()
-
-	q := &survey.Select{
-		Message:  "Select git emoji",
-		Options:  formatted,
-		PageSize: 6,
-	}
-
-	var selected string
-	if err := survey.AskOne(q, &selected); err != nil {
-		return "", err
-	}
-
-	split := strings.SplitN(selected, ":", 2)
-
-	return split[0], nil
-}
-
-func SelectCommitType() (string, error) {
+func SelectCommitType() (GitTag, error) {
 	q := &survey.Select{
 		Message:  "Select commit type",
 		Options:  GetGitCommitType(),
@@ -53,7 +32,7 @@ func SelectCommitType() (string, error) {
 
 	var selected string
 	if err := survey.AskOne(q, &selected); err != nil {
-		return "", err
+		return GitTag{}, err
 	}
 
 	return GitCommitType[selected], nil

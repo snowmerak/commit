@@ -80,12 +80,12 @@ func FormatUnsagedFiles(files GitFiles) []string {
 
 type CommitMessage struct {
 	Emoji   string
-	Type    string
+	Tag     string
 	Message string
 }
 
 func (c CommitMessage) String() string {
-	return fmt.Sprintf("%s %s: %s", c.Emoji, c.Type, c.Message)
+	return fmt.Sprintf("[%s]%s: %s", c.Emoji, c.Tag, c.Message)
 }
 
 func GitAdd(files []string) error {
